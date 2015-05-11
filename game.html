@@ -32,7 +32,7 @@ confirm("Do you want to play the next game?");
 alert("We are now going to figure out the price of this dishwasher. You have to correctly guess all three digits in the price.");
 
 //Randomly generate the first digit.
-var firstDigit = Math.floor(Math.random() * 10);
+var firstDigit = Math.floor(Math.random() * 9)+1;
 console.log (firstDigit);
 
 //Giving a hint about the first digit. Greater than or equal to 5?
@@ -49,6 +49,7 @@ var yourGuess1 = prompt("What do you think our price starts with?");
 //now we check your guess against the random digit
 if (firstDigit == yourGuess1) {
   var message2 = "Fantastic!"
+
 //Generates the second digit
   var secondDigit = Math.floor(Math.random() * 10);
 console.log (secondDigit);
@@ -59,7 +60,7 @@ console.log (secondDigit);
   }  else {
     var yourGuess2 = prompt("The second number is smaller than or equal to the first. What do you think it is?");
   }
-  alert(message3);
+
 
 //Let's compare it to the randomly generated 2nd digit.
     if (yourGuess2 == secondDigit) {
@@ -82,12 +83,12 @@ console.log (secondDigit);
           var message5 = "Holy smokes! You got it! The dishwasher costs $" + firstDigit + secondDigit + thirdDigit +"!";
         }
         else {
-          var message5 = "Huh. You were so close. Now you are a loser. Sorry."
+          var message5 = "Huh. You were so close. Now you lose. Sorry."
         }
         alert(message5);
     }
     else {
-      var message3 = "I am sorry but you are wrong. The second digit was " + secondDigit + ".";
+      alert ("I am sorry but you are wrong. The second digit was " + secondDigit + ".");
     }
 
 
@@ -96,5 +97,7 @@ console.log (secondDigit);
   else {
     alert("Oh, I am sorry! The correct number was " + firstDigit + ". No dishwasher for you");
   }
+
+
 
 </script>
