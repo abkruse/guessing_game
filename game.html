@@ -1,0 +1,30 @@
+<script type="text/javascript">
+var choice, guess, price, message;
+
+
+//Here we have 3 prize packs that people will choose from.
+var choice = prompt("You have a choice of a trip to Hawaii, a new car, or a game room. Which prize package do you choose?");
+//The computer generates a price up to $9999.
+var price = Math.floor(Math.random()*10000);
+console.log(price);
+
+//Now we ask the player to guess the price of the prize.
+var guess = prompt("Aaand that prize will be your's if you can guess the cost within $1000. You win all the prizes if you get it exactly right! How much do you think it is?");
+
+
+//If they are exact, they win it all!
+if (price == guess) {
+  message = "CONGRATULATIONS! YOU WIN ALL THE PRIZES!";
+}
+//If they are within $1000 then they just get that prize.
+else if ((Math.abs(price - guess)<=1000) || (Math.abs(guess - price)<=1000)) {
+  message ="Congratulations! You win the " + choice + "!";
+}
+//Or they will win nothing.
+else {
+  message = "I am sorry. You do not win anything.";
+}
+
+alert(message);
+
+</script>
