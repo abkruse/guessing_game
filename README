@@ -5,3 +5,6 @@ The computer will generate an amount for the prize.
 If you get the price exactly right then you win all the prizes.
 If you are within $1000, then you just win the prize you chose.
 If you are more than $1000 off then you win nothing.
+
+The second half of the game has you guess the price of a dishwasher, digit by digit. The game will give you hints
+to help you guess the next number.
