@@ -1,0 +1,7 @@
+This game is styled a bit like The Price is Right but a little different. You have three prize packs to choose.
+You can select a trip to Hawaii, a new car, or a gameroom.
+Once you select it, you need to guess how much it costs (within 0-$9999).
+The computer will generate an amount for the prize.
+If you get the price exactly right then you win all the prizes.
+If you are within $1000, then you just win the prize you chose.
+If you are more than $1000 off then you win nothing.
