@@ -1,5 +1,5 @@
 <script type="text/javascript">
-var choice, guess, price, message;
+var choice, guess, price, message, prizePrice, dishwasherValue, totalPrize;
 
 
 //Here we have 3 prize packs that people will choose from.
@@ -9,20 +9,23 @@ var price = Math.floor(Math.random()*10000);
 console.log(price);
 
 //Now we ask the player to guess the price of the prize.
-var guess = prompt("Aaand that prize will be your's if you can guess the cost within $1000. You win all the prizes if you get it exactly right. Guess between 0 and $9999.");
+var guess = prompt("Aaand that prize will be yours if you can guess the cost within $1000. You win all the prizes if you get it exactly right. Guess between 0 and $9999.");
 
 
 //If they are exact, they win it all!
 if (price == guess) {
   message = "CONGRATULATIONS! YOU WIN ALL THE PRIZES!";
+  prizePrice = 8675309;
 }
 //If they are within $1000 then they just get that prize.
 else if ((Math.abs(price - guess)<=1000) || (Math.abs(guess - price)<=1000)) {
   message ="Congratulations! You win the " + choice + "!";
+  prizePrice = price;
 }
 //Or they will win nothing.
 else {
   message = "I am sorry. You do not win anything.";
+  prizePrice = 0;
 }
 
 alert(message);
@@ -79,14 +82,17 @@ console.log (secondDigit);
 // All the guesses are in. Did they win the game?
         if (yourGuess3 == thirdDigit) {
           var message5 = "Holy smokes! You got it! The dishwasher costs $" + firstDigit + secondDigit + thirdDigit +"!";
+          dishwasherValue = firstDigit + secondDigit + thirdDigit;
         }
         else {
           var message5 = "Huh. You were so close. Now you lose. Sorry."
+          dishwasherValue = 0;
         }
         alert(message5);
     }
     else {
       alert ("I am sorry but you are wrong. The second digit was " + secondDigit + ".");
+      dishwasherValue = 0;
     }
 
 
@@ -94,8 +100,11 @@ console.log (secondDigit);
 }
   else {
     alert("Oh, I am sorry! The correct number was " + firstDigit + ". No dishwasher for you");
+    dishwasherValue = 0;
   }
+totalPrize = prizePrice + dishwasherValue;
 
+alert("Your total winings are: $" + totalPrize); 
 
 
 </script>
