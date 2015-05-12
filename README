@@ -8,3 +8,8 @@ If you are more than $1000 off then you win nothing.
 
 The second half of the game has you guess the price of a dishwasher, digit by digit. The game will give you hints
 to help you guess the next number.
+
+
+Tristan's notes:
+
+We cleaned up some of code and tried to simplify. We also added a total prize package feature. Now you can see your total winnings at the end of the game! and boy, is it great! Unless your earnings are $0. Then it's a real slap in the face.
