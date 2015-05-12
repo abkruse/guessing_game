@@ -37,14 +37,12 @@ console.log (firstDigit);
 
 //Giving a hint about the first digit. Greater than or equal to 5?
 if (firstDigit > 5) {
-  var message1 = "The first digit it greater than 5.";
+  var yourGuess1 = prompt("The first digit it greater than 5. So, what do you think it is?");
 }
 else {
-  var message1 = "The first digit is less than or equal to 5.";
+  var yourGuess1 = prompt("The first digit is less than or equal to 5. So, what do you think it is?");
 }
-alert(message1);
 
-var yourGuess1 = prompt("What do you think our price starts with?");
 
 //now we check your guess against the random digit
 if (firstDigit == yourGuess1) {
