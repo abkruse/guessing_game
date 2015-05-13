@@ -1,34 +1,37 @@
 <script type="text/javascript">
-var choice, guess, price, message, prizePrice, dishwasherValue, totalPrize, yourGuess1, firstDigit, message2, secondDigit, yourGuess2, thirdDigit, yourGuess3, message5;
+  var message, prizePrice, dishwasherValue, totalPrize, yourGuess1, firstDigit, message2, secondDigit, yourGuess2, thirdDigit, yourGuess3, message5;
 
+  function Game(choice, guess) {
+    this.choice = choice;
+    this.guess = guess;
+    this.price = Math.floor(Math.random()*10000);
 
+    console.log(this.price);
 
-//Here we have 3 prize packs that people will choose from.
-choice = prompt("You have a choice of a trip to Hawaii, a new car, or a game room. Which prize package do you choose?");
-//The computer generates a price up to $9999.
-price = Math.floor(Math.random()*10000);
-console.log(price);
-//Now we ask the player to guess the price of the prize.
-guess = prompt("Aaand that prize will be yours if you can guess the cost within $1000. You win all the prizes if you get it exactly right. Guess between 0 and $9999.");
-
-
-
-//If they are exact, they win it all!
-if (price == guess) {
-  message = "CONGRATULATIONS! YOU WIN ALL THE PRIZES!";
-  prizePrice = 8675309;
+  this.compare = function () {//If they are exact, they win it all!
+    if (this.price == this.guess) {
+      message = "CONGRATULATIONS! YOU WIN ALL THE PRIZES!";
+      prizePrice= 8675309;
+    }
+    //If they are within $1000 then they just get that prize.
+    else if ((Math.abs(this.price - this.guess)<=1000) || (Math.abs(this.guess - this.price)<=1000)) {
+      message ="Congratulations! You win the " + this.choice + "!";
+      prizePrice = this.price;
+    }
+    //Or they will win nothing.
+    else {
+      message = "I am sorry. You do not win anything.";
+      prizePrice = 0;
+    }
+    alert(message);
+  }
 }
-//If they are within $1000 then they just get that prize.
-else if ((Math.abs(price - guess)<=1000) || (Math.abs(guess - price)<=1000)) {
-  message ="Congratulations! You win the " + choice + "!";
-  prizePrice = price;
-}
-//Or they will win nothing.
-else {
-  message = "I am sorry. You do not win anything.";
-  prizePrice = 0;
-}
-alert(message);
+  var choice = prompt("You have a choice of a trip to Hawaii, a new car, or a game room. Which prize package do you choose?");
+  var newGame = new Game(choice);
+
+  newGame.guess = prompt("Aaand that prize will be yours if you can guess the cost within $1000. You win all the prizes if you get it exactly right. Guess between 0 and $9999.");
+  newGame.compare();
+
 confirm("Do you want to play the next game?");
 alert("We are now going to figure out the price of this dishwasher. You have to correctly guess all three digits in the price.");
 //Randomly generate the first digit.
@@ -87,8 +90,5 @@ console.log (secondDigit);
     dishwasherValue = 0;
   }
 totalPrize = prizePrice + dishwasherValue;
-
 alert("Your total winings are: $" + totalPrize);
-
-
 </script>
