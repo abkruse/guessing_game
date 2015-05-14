@@ -1,94 +1,181 @@
-<script type="text/javascript">
-  var message, prizePrice, dishwasherValue, totalPrize, yourGuess1, firstDigit, message2, secondDigit, yourGuess2, thirdDigit, yourGuess3, message5;
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tough Odds</title>
+</head>
+<body background= "images/backgroundpattern2.png">
+  <header>
+    <ul>
+      <li align="left"><a href="README.html">How to Play</a></li>
+      <li align="center"><h1>Tough Odds</h1></li>
+      <li align="right"><a href="reviews.html">Reviews</a></li>
+    </ul>
+  </header>
+  <button align="center">Play the Game</button>
+  <article>
+    <table align="center">
+      <thead>
+        <tr>
+          <th colspan="2">
+            <h3>Top Ten Winners</h3>
+          </th>
+        </tr>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Total Winnings</th>
+        </tr>
+      </thead>
+      <Tbody>
+        <tr>
+          <td>1.</td>
+          <td>$</td>
+        </tr>
+        <tr>
+          <td>2.</td>
+          <td>$</td>
+        </tr>
+        <tr>
+          <td>3.</td>
+          <td>$</td>
+        </tr>
+        <tr>
+          <td>4.</td>
+          <td>$</td>
+        </tr>
+        <tr>
+          <td>5.</td>
+          <td>$</td>
+        </tr>
+        <tr>
+          <td>6.</td>
+          <td>$</td>
+        </tr>
+        <tr>
+          <td>7.</td>
+          <td>$</td>
+        </tr>
+        <tr>
+          <td>8.</td>
+          <td>$</td>
+        </tr>
+        <tr>
+          <td>9.</td>
+          <td>$</td>
+        </tr>
+        <tr>
+          <td>10.</td>
+          <td>$</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  <article align="center">
+    <h2>How to Play</h2>
+    <p>It's your chance to win big! In this game you have two rounds of guessing to see just how well you can win at a game where all the odds are stacked against you!</p>
+    <img src="images/anewcar.jpg" alt="Your new car">
+    <p>First, you have a chance to win <strong>a new car, a trip to Hawaii, or a game room</strong>! No hints on this one! If you get the exact price right, you win all the prizes! If you guess within $1000 then you win just that one prize.</p>
+    <p>In the second round, you play for <strong> a brand new dishwasher</strong>. You are given hints to guess the price digit by digit. Be careful! There are no second chances! Get it perfectly right or you are washing your dishes by hand!</p>
+    <img src="images/anewdishwasher.png" alt="Your new dishwasher!">
+  </article>
+  <article align="center">
+    <h2>What Everyone is Saying About Us!</h2>
+    <p>The best game ever.</p>
+  </article>
+  <footer>
+    <h3 align="center">don't forget to spay and neuter your pets</h3>
+  </footer>
 
-  function Game(choice, guess) {
-    this.choice = choice;
-    this.guess = guess;
-    this.price = Math.floor(Math.random()*10000);
+  <script type="text/javascript">
 
-    console.log(this.price);
+    var message, prizePrice, wrongValue, winningValue, totalPrize, yourGuess1, firstDigit, message2, secondDigit, yourGuess2, thirdDigit, yourGuess3, message5;
 
-  this.compare = function () {//If they are exact, they win it all!
-    if (this.price == this.guess) {
-      message = "CONGRATULATIONS! YOU WIN ALL THE PRIZES!";
-      prizePrice= 8675309;
+  window.onload = function () {
+    function Game(choice, guess) {
+      this.choice = choice;
+      this.guess = guess;
+      this.price = Math.floor(Math.random()*10000);
+      console.log(this.price);
     }
-    //If they are within $1000 then they just get that prize.
-    else if ((Math.abs(this.price - this.guess)<=1000) || (Math.abs(this.guess - this.price)<=1000)) {
-      message ="Congratulations! You win the " + this.choice + "!";
-      prizePrice = this.price;
+
+    Game.prototype.compare = function () {
+      if (this.price == this.guess) {
+        message = "CONGRATULATIONS! YOU WIN ALL THE PRIZES!";
+        prizePrice= 8675309;
+      } else if ((Math.abs(this.price - this.guess)<=1000) || (Math.abs(this.guess - this.price)<=1000)) {
+        message ="Congratulations! You win the " + this.choice + "!";
+        prizePrice = this.price;
+      } else {
+        message = "I am sorry. You do not win anything.";
+        prizePrice = 0;
+      }
+      alert(message);
     }
-    //Or they will win nothing.
+
+    var choice = prompt("You have a choice of a trip to Hawaii, a new car, or a game room. Which prize package do you choose?");
+    var newGame = new Game(choice);
+
+    newGame.guess = prompt("Aaand that prize will be yours if you can guess the cost within $1000. You win all the prizes if you get it exactly right. Guess between 0 and $9999.");
+    newGame.compare();
+
+    alert("We are now going to figure out the price of this dishwasher. You have to correctly guess all three digits in the price.");
+
+    var Price = function() {
+      this.firstDigit = Math.floor(Math.random()*9)+1;
+      this.secondDigit = Math.floor(Math.random()*10);
+      this.thirdDigit = Math.floor(Math.random()*10);
+      this.dishwasherValue = function() {
+       return this.thirdDigit + this.secondDigit + this.firstDigit;
+    }
+  }
+    var newPrice = new Price();
+    newPrice.dishwasherValue();
+
+    if (newPrice.firstDigit > 5) {
+      yourGuess1 = prompt("The first digit it greater than 5. So, what do you think it is?");
+    }
     else {
-      message = "I am sorry. You do not win anything.";
-      prizePrice = 0;
+      yourGuess1 = prompt("The first digit is less than or equal to 5. So, what do you think it is?");
     }
-    alert(message);
-  }
-}
-  var choice = prompt("You have a choice of a trip to Hawaii, a new car, or a game room. Which prize package do you choose?");
-  var newGame = new Game(choice);
 
-  newGame.guess = prompt("Aaand that prize will be yours if you can guess the cost within $1000. You win all the prizes if you get it exactly right. Guess between 0 and $9999.");
-  newGame.compare();
+    if (newPrice.firstDigit == yourGuess1) {
+      message2 = "Fantastic!"
+      if (newPrice.secondDigit > newPrice.firstDigit) {
+        yourGuess2 = prompt ("Now, the second number is bigger than the first. What do you think it is?");
+      }  else {
+        yourGuess2 = prompt("The second number is smaller than or equal to the first. What do you think it is?");
+      }
 
-confirm("Do you want to play the next game?");
-alert("We are now going to figure out the price of this dishwasher. You have to correctly guess all three digits in the price.");
-//Randomly generate the first digit.
-firstDigit = Math.floor(Math.random() * 9)+1;
-console.log (firstDigit);
-//Giving a hint about the first digit. Greater than or equal to 5?
-if (firstDigit > 5) {
-  yourGuess1 = prompt("The first digit it greater than 5. So, what do you think it is?");
-}
-else {
-  yourGuess1 = prompt("The first digit is less than or equal to 5. So, what do you think it is?");
-}
-//now we check your guess against the random digit
-if (firstDigit == yourGuess1) {
-  message2 = "Fantastic!"
-//Generates the second digit
-  secondDigit = Math.floor(Math.random() * 10);
-console.log (secondDigit);
-//compares the first digit and the second. Which is bigger? And let's ask for their guess.
-  if (secondDigit > firstDigit) {
-    yourGuess2 = prompt ("Now, the second number is bigger than the first. What do you think it is?");
-  }  else {
-    yourGuess2 = prompt("The second number is smaller than or equal to the first. What do you think it is?");
-  }
-//Let's compare it to the randomly generated 2nd digit.
-    if (yourGuess2 == secondDigit) {
-      alert("Nice work! Only one more digit to go!");
-      //Time to generate the third digit!
-      thirdDigit = Math.floor(Math.random()*10);
-      console.log(thirdDigit);
-//Let's give a hint. Is the third digit odd or even? Let's also get their guess.
-        if (thirdDigit %2 === 0) {
+      if (yourGuess2 == newPrice.secondDigit) {
+        alert("Nice work! Only one more digit to go!");
+
+        if (newPrice.thirdDigit %2 === 0) {
           yourGuess3 = prompt("The third digit is even. What do you think it is?");
-        }
-        else {
+        } else {
           yourGuess3 = prompt("The third digit is odd. What do you think it is?");
         }
-// All the guesses are in. Did they win the game?
-        if (yourGuess3 == thirdDigit) {
-          message5 = "Holy smokes! You got it! The dishwasher costs $" + firstDigit + secondDigit + thirdDigit +"!";
-          dishwasherValue = firstDigit + secondDigit + thirdDigit;
-        }
-        else {
+
+        if (yourGuess3 == newPrice.thirdDigit) {
+          message5 = "Holy smokes! You got it! The dishwasher costs $" + newPrice.firstDigit + newPrice.secondDigit + newPrice.thirdDigit +"!";
+            winningValue = newPrice.firstDigit + newPrice.secondDigit + newPrice.thirdDigit;
+        }else {
           message5 = "Huh. You were so close. Now you lose. Sorry."
-          dishwasherValue = 0;
+          wrongValue = 0;
         }
         alert(message5);
+      } else {
+        alert ("I am sorry but you are wrong. The second digit was " + newPrice.secondDigit + ".");
+        wrongValue = 0;
+      }
+    } else {
+      alert("Oh, I am sorry! The correct number was " + newPrice.firstDigit + ". No dishwasher for you");
+      wrongValue = 0;
     }
-    else {
-      alert ("I am sorry but you are wrong. The second digit was " + secondDigit + ".");
-      dishwasherValue = 0;
-    }
-}
-  else {
-    alert("Oh, I am sorry! The correct number was " + firstDigit + ". No dishwasher for you");
-    dishwasherValue = 0;
+
+    totalPrize = newGame.prizePrice+ wrongValue + winningValue;
+
+    alert("Your total winings are: $" + totalPrize);
   }
-totalPrize = prizePrice + dishwasherValue;
-alert("Your total winings are: $" + totalPrize);
-</script>
+  </script>
+</body>
+</html>
+
