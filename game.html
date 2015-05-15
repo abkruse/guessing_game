@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tough Odds</title>
+  <meta charset="utf-8">
+  <title>Tough Luck</title>
+  <meta name="description" content="game, price is right, tough luck">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
-<body background= "images/backgroundpattern2.png">
+<body background= "images/background.jpeg">
   <header>
     <ul>
       <li align="left"><a href="README.html">How to Play</a></li>
@@ -11,13 +15,16 @@
       <li align="right"><a href="reviews.html">Reviews</a></li>
     </ul>
   </header>
+  <br />
+  <img src="http://trinitybc.org/vbs2010/files/horseshoe%20home.png" alt="http://trinitybc.org/vbs2010/files/horseshoe%20home.png" title="horseshoe image" width="350" height="350" align="center">
+  <br />
   <button align="center">Play the Game</button>
   <article>
     <table align="center">
       <thead>
         <tr>
           <th colspan="2">
-            <h3>Top Ten Winners</h3>
+            <h3>Top Five Winners</h3>
           </th>
         </tr>
         <tr>
@@ -46,26 +53,6 @@
           <td>5.</td>
           <td>$</td>
         </tr>
-        <tr>
-          <td>6.</td>
-          <td>$</td>
-        </tr>
-        <tr>
-          <td>7.</td>
-          <td>$</td>
-        </tr>
-        <tr>
-          <td>8.</td>
-          <td>$</td>
-        </tr>
-        <tr>
-          <td>9.</td>
-          <td>$</td>
-        </tr>
-        <tr>
-          <td>10.</td>
-          <td>$</td>
-        </tr>
       </tbody>
     </table>
   </article>
@@ -87,7 +74,7 @@
 
   <script type="text/javascript">
 
-    var message, prizePrice, wrongValue, winningValue, totalPrize, yourGuess1, firstDigit, message2, secondDigit, yourGuess2, thirdDigit, yourGuess3, message5;
+  var message, prizePrice, wrongValue, winningValue, totalPrize, yourGuess1, firstDigit, message2, secondDigit, yourGuess2, thirdDigit, yourGuess3, message5;
 
   window.onload = function () {
     function Game(choice, guess) {
