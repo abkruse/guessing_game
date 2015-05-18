@@ -44,7 +44,6 @@ window.onload = function(){
 
     nextHint = document.getElementById('second-hint');
     nextHint.textContent = secondHint;
-
     console.log(newPrice.secondDigit);
 
     document.getElementById('input-guess2').onclick = function (){
@@ -58,7 +57,6 @@ window.onload = function(){
 
     lastHint = document.getElementById('third-hint');
     lastHint.textContent = thirdHint;
-
     console.log(newPrice.thirdDigit);
 
     document.getElementById('input-guess3').onclick = function (){
@@ -75,5 +73,4 @@ window.onload = function(){
     }
     }
   }
-
 }
