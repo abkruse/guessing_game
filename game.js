@@ -6,6 +6,7 @@ window.onload = function(){
       this.thirdDigit = Math.floor(Math.random()*10);
       this.dishwasherValue = function() {
         return this.thirdDigit.toString() + this.secondDigit.toString() + this.firstDigit.toString();
+      this.finalMessage = "";
 
     }
     this.show = function(){
@@ -34,9 +35,7 @@ window.onload = function(){
 
   document.getElementById('input-guess1').onclick = function (){
     yourGuess1 = document.getElementById('digit-one').value;
-
     if (newPrice.firstDigit == yourGuess1) {
-
       if (newPrice.secondDigit > newPrice.firstDigit) {
         secondHint = "Now, the second number is bigger than the first. What do you think it is?";
       }  else {
@@ -50,9 +49,7 @@ window.onload = function(){
 
     document.getElementById('input-guess2').onclick = function (){
       yourGuess2 = document.getElementById('digit-two').value;
-
       if (yourGuess2 == newPrice.secondDigit) {
-
         if (newPrice.thirdDigit %2 === 0) {
           thirdHint = "The third digit is even. What do you think it is?";
         } else {
@@ -66,19 +63,17 @@ window.onload = function(){
 
     document.getElementById('input-guess3').onclick = function (){
       yourGuess3 = document.getElementById('digit-three').value;
-
         if (yourGuess3 == newPrice.thirdDigit) {
-          finalMessage = "Holy smokes! You got it! The dishwasher costs $" + newPrice.dishwasherValue() + "!";
+          document.getElementById('final-message').textContent = "Holy smokes! You got it! The dishwasher costs $" + newPrice.dishwasherValue() + "!";
         } else {
-          finalMessage = "Huh. You were so close. The correct total value was $" + newPrice.dishwasherValue() + ". Now you lose. Sorry.";
+          document.getElementById('final-message').textContent = "Huh. You were so close. The correct total value was $" + newPrice.dishwasherValue() + ". Now you lose. Sorry.";
         } } } else {
-        finalMessage = "I am sorry but you are wrong. The second digit was " + newPrice.secondDigit + ".";
+        document.getElementById('final-message').textContent = "I am sorry but you are wrong. The second digit was " + newPrice.secondDigit + ".";
         ;
       } } } else {
-        finalMessage = "Oh, I am sorry! The correct number was " + newPrice.firstDigit + ". No dishwasher for you";
+        document.getElementById('final-message').textContent = "Oh, I am sorry! The correct number was " + newPrice.firstDigit + ". No dishwasher for you.";
     }
     }
-    var endGame = document.getElementById('final-message');
-    endGame.textcontent = finalMessage;
   }
+
 }
